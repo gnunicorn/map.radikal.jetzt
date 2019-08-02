@@ -40,10 +40,34 @@ layout: map
                 <fieldset>
                     <legend>Themenbereiche</legend>
                     <ul>
-                    <li><label><input checked type="checkbox">Anti-Rassismus <i class="fa fa-fist-raised" style="color:darkred"></i></label></li>
-                    <li><label><input checked type="checkbox">Feminismus <i class="fa fa-venus" style="color:purple"></i></label></li>
-                    <li><label><input checked type="checkbox">Menschenrechte <i class="fa fa-star-of-life" style="color:lightblue"></i></label></li>
-                    <li><label><input checked type="checkbox">Klima <i class="fa fa-globe" style="color:lightgreen"></i></label></li>
+                    <li>
+                        <label>
+                            <input checked name="topic" value="diversity" type="checkbox">
+                            Anti-Rassismus
+                            <i class="fa fa-fist-raised" style="color:darkred"></i>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input checked name="topic" value="feminism" type="checkbox">
+                            Feminismus
+                            <i class="fa fa-venus" style="color:purple"></i>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input checked name="topic" value="humanright" type="checkbox">
+                            Menschenrechte
+                            <i class="fa fa-star-of-life" style="color:lightblue"></i>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input checked name="topic" value="climate" type="checkbox">
+                            Klima
+                            <i class="fa fa-globe" style="color:lightgreen"></i>
+                        </label>
+                    </li>
                     </ul>
                 </fieldset>
                 <p></p>
@@ -51,9 +75,24 @@ layout: map
                 <fieldset>
                     <legend>Organisationsform</legend>
                     <ul>
-                    <li><label><input checked type="checkbox">NGO / Verein</label></li>
-                    <li><label><input checked type="checkbox">(freie) Initiative</label></li>
-                    <li><label><input type="checkbox">Partei-/naher Ortsverband</label></li>
+                        <li>
+                            <label>
+                                <input checked name="org" value="ngo" type="checkbox">
+                                NGO / Verein
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input checked name="org" value="ini" type="checkbox">
+                                (freie) Initiative
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" name="org" value="party">
+                                Partei-/naher Ortsverband
+                            </label>
+                        </li>
                     </ul>
                 </fieldset>
             </form>
@@ -88,6 +127,30 @@ layout: map
 
     L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
 
+    let I = {
+        diversity: L.AwesomeMarkers.icon({
+            icon: 'fist-raised',
+            markerColor: 'red',
+            iconColor: 'white'
+        }),
+        humanRights: L.AwesomeMarkers.icon({
+            icon: 'star-of-life',
+            markerColor: 'blue',
+            iconColor: 'white'
+        }),
+        feminism: L.AwesomeMarkers.icon({
+            icon: 'venus',
+            markerColor: 'purple',
+            iconColor: 'white'
+        }),
+        climate: L.AwesomeMarkers.icon({
+            icon: 'globe',
+            markerColor: 'green',
+            iconColor: 'white'
+        })
+    };
+    
+
 	var mymap = L.map('mapid', {
         zoomControl: false
     }).setView([51.930083, 4.507742], 13);
@@ -117,49 +180,67 @@ layout: map
 
     lc.start();
 
-    // Add markers to map
-    // Ionicons
-    L.marker([51.941196, 4.512291], {
-        icon: L.AwesomeMarkers.icon({
-            icon: 'fist-raised',
-            markerColor: 'red',
-            iconColor: 'white'
-        })
-    }).addTo( mymap );
-    L.marker([51.927913, 4.521303], {
-        icon: L.AwesomeMarkers.icon({
-            icon: 'star-of-life',
-            markerColor: 'blue',
-            iconColor: 'white'
-        })
-    }).addTo( mymap );
-    L.marker([51.936063, 4.502077], {
-        icon: L.AwesomeMarkers.icon({
-            icon: 'venus',
-            markerColor: 'purple',
-            iconColor: 'white'
-        })
-    }).addTo( mymap );
+    let markers = [
 
-    L.marker([51.932835, 4.506969], {
-        icon: L.AwesomeMarkers.icon({
-            icon: 'globe',
-            markerColor: 'green',
-            iconColor: 'white'
-        })
-    }).addTo( mymap );
-    // L.marker([51.930295, 4.515209], {
-    //     icon: L.AwesomeMarkers.icon({
-    //         icon: 'heart',
-    //         markerColor: 'blue'
-    //     })
-    // }).addTo( mymap );
-    // L.marker([51.930083, 4.507742], {
-    //     icon: L.AwesomeMarkers.icon({
-    //         icon: 'flag',
-    //         markerColor: 'blue'
-    //     })
-    // }).addTo( mymap );
+        L.marker([51.941196, 4.512291], {
+            icon: I.diversity,
+            org: "ngo",
+            topics: ["diversity", "feminism"]
+        }).bindPopup('test'),
 
+        L.marker([51.927913, 4.521303], {
+            icon: I.diversity,
+            org: "party",
+            topics: ["diversity"]
+        }),
+
+        L.marker([51.936063, 4.502077], {
+            icon: I.feminism,
+            org: "ini",
+            topics: ["feminism"]
+        }),
+
+        L.marker([51.932835, 4.506969], {
+            icon: I.climate,
+            org: "ngo",
+            topics: ["climate"]
+        })
+    ];
+
+    function updateMarkers() {
+        let topics = [];
+        let orgs = [];
+        
+        document.querySelectorAll("input[name=topic]").forEach(i => {
+            if (i.checked) { topics.push(i.attributes.value.nodeValue) }
+        });
+
+        document.querySelectorAll("input[name=org]").forEach(i => {
+            if (i.checked) { orgs.push(i.attributes.value.nodeValue) }
+        });
+
+        markers.forEach(m => {
+            var keep = false;
+            if (orgs.indexOf(m.options.org) >= 0) {
+                m.options.topics.forEach(t => {
+                    if (topics.indexOf(t) >= 0) {
+                        keep = true;
+                    }
+                });
+            }
+
+            if (keep) {
+                m.addTo( mymap );
+            } else {
+                m.remove();
+            }
+
+        });
+    }
+
+    document.querySelectorAll("input[type=checkbox]")
+        .forEach(e => e.addEventListener("change", updateMarkers));
+
+    updateMarkers();
 
 </script>
