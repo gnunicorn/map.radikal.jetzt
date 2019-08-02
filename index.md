@@ -170,6 +170,7 @@ layout: map
 
     var lc = L.control.locate({
         position: 'topright',
+        onLocationError: () => {},
         strings: {
             title: "Show me where I am, yo!"
         }
@@ -178,33 +179,16 @@ layout: map
     var sidebar = L.control.sidebar('sidebar').addTo( mymap );
     sidebar.open("filter");
 
-    lc.start();
+    // lc.start();
 
     let markers = [
-
-        L.marker([51.941196, 4.512291], {
-            icon: I.diversity,
-            org: "ngo",
-            topics: ["diversity", "feminism"]
-        }).bindPopup('test'),
-
-        L.marker([51.927913, 4.521303], {
-            icon: I.diversity,
-            org: "party",
-            topics: ["diversity"]
-        }),
-
-        L.marker([51.936063, 4.502077], {
-            icon: I.feminism,
-            org: "ini",
-            topics: ["feminism"]
-        }),
-
-        L.marker([51.932835, 4.506969], {
-            icon: I.climate,
-            org: "ngo",
-            topics: ["climate"]
-        })
+        {% for e in site.data.examples %}
+            L.marker([{{e.location[0]}}, {{e.location[1]}}], {
+                icon: I.{{e.topics[0]}},
+                org: "{{e.org}}",
+                topics: ["{{e.topics | join:'","' }}"]
+            }).bindPopup('{{e.title|json}}'){% if forloop.last == false %},{%endif%}
+        {% endfor %}
     ];
 
     function updateMarkers() {

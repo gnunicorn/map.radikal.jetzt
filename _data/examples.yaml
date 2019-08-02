@@ -1,0 +1,22 @@
+- title: first
+  location: [51.941196, 4.512291]
+  org: ngo
+  topics:
+    - diversity
+    - feminism 
+- title: two
+  location: [51.927913, 4.521303]
+  org: ini
+  topics:
+    - feminism
+- title: third
+  location: [51.936063, 4.502077]
+  org: ngo
+  topics:
+    - climate
+    - diversity
+- title: fourth
+  location: [51.932835, 4.506969]
+  org: party
+  topics:
+    - diversity
