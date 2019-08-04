@@ -13,6 +13,12 @@ layout: map
 
 
 <div id="mapid" class="sidebar-map"></div>
+<div style="display:none">
+{% for e in site.data.examples %}   
+    {% capture id %}entry-{%increment popupCounter %}{% endcapture %}
+    {% include popup.html item=e id=id %}
+{% endfor %}
+</div>
 <div id="sidebar" class="sidebar collapsed">
     <!-- Nav tabs -->
     <div class="sidebar-tabs">
@@ -182,13 +188,11 @@ layout: map
     // lc.start();
 
     let markers = [
-        {% for e in site.data.examples %}
-            L.marker([{{e.location[0]}}, {{e.location[1]}}], {
-                icon: I.{{e.topics[0]}},
-                org: "{{e.org}}",
-                topics: ["{{e.topics | join:'","' }}"]
-            }).bindPopup('{{e.title|json}}'){% if forloop.last == false %},{%endif%}
+        {% for e in site.data.examples %}   
+            {% capture id %}entry-{%increment markerCounter %}{% endcapture %}
+            {% include marker.js item=e popup_id=id %},
         {% endfor %}
+        false // pending entry so we can just make a comma in the loop
     ];
 
     function updateMarkers() {
@@ -204,6 +208,7 @@ layout: map
         });
 
         markers.forEach(m => {
+            if (!m) return; // skip the 'false' at the end.
             var keep = false;
             if (orgs.indexOf(m.options.org) >= 0) {
                 m.options.topics.forEach(t => {
