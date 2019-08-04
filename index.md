@@ -26,13 +26,11 @@ layout: map
         <ul role="tablist" style="padding-top: 5px">
             <li><a href="#filter" role="tab"><i class="fa fa-filter"></i></a></li>
         </ul>
-
         <ul role="tablist">
             <li><a href="#contribute" role="tab"><i class="fa fa-plus-circle"></i></a></li>
             <li><a href="#info" role="tab"><i class="fa fa-info-circle"></i></a></li>
         </ul>
     </div>
-
     <!-- Tab panes -->
     <div class="sidebar-content">
         <div class="sidebar-pane" id="filter">
@@ -40,7 +38,6 @@ layout: map
                 Karte filtern
                 <span class="sidebar-close"><i class="fa fa-times-circle"></i></span>
             </h1>
-
             <form>
                 <p style="padding-top: 1em">zeige nur</p>
                 <fieldset>
@@ -77,7 +74,6 @@ layout: map
                     </ul>
                 </fieldset>
                 <p></p>
-
                 <fieldset>
                     <legend>Organisationsform</legend>
                     <ul>
@@ -102,13 +98,10 @@ layout: map
                     </ul>
                 </fieldset>
             </form>
-
         </div>
-
         <div class="sidebar-pane" id="info">
             <h1 class="sidebar-header">Über<span class="sidebar-close"><i class="fa fa-times-circle"></i></span></h1>
         </div>
-
         <div class="sidebar-pane" id="contribute">
             <h1 class="sidebar-header">Contribute<span class="sidebar-close"><i class="fa fa-times-circle"></i></span></h1>
         </div>
