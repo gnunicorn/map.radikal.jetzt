@@ -1,0 +1,13 @@
+seebruecke:
+  title: Seebrücke
+  website: "https://seebruecke.org/"
+  type: "ngo"
+  topics:
+    - diversity
+    - refugeees
+xr:
+  title: "Extinction Rebellion"
+  website: "https://extinctionrebellion.de/"
+  type: "ngo"
+  topics:
+    - climate

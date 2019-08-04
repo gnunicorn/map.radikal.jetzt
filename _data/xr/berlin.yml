@@ -1,0 +1,16 @@
+title: "Extinction Rebellion Berlin"
+location:
+  lat: 51.31
+  lng: 13.2320
+state: "active"
+
+contact:
+  email: berlin@extinctionrebellion.de
+  pgp_key_id: "0x04C0217D94E661CA"
+  facebook: "https://www.facebook.com/xrberlin/"
+  twitter: "https://twitter.com/xrberlin"
+  instagram: "https://twitter.com/xrberlin"
+
+
+meta:
+  updated: "2019-08-04T19:00UTC"

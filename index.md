@@ -14,9 +14,15 @@ layout: map
 
 <div id="mapid" class="sidebar-map"></div>
 <div style="display:none">
-{% for e in site.data.examples %}   
-    {% capture id %}entry-{%increment popupCounter %}{% endcapture %}
-    {% include popup.html item=e id=id %}
+{% for o in site.data.orgs %}
+    {% assign org_id = o[0] %}
+    {% assign org = o[1] %}
+
+    {% for e in site.data[org_id] %}   
+        {% capture id %}{{org_id}}-{{e[0]}}{% endcapture %}
+        {% assign item=e[1] %}
+        {% include popup.html item=item org=org id=id %}
+    {% endfor %}
 {% endfor %}
 </div>
 <div id="sidebar" class="sidebar collapsed">
@@ -181,9 +187,14 @@ layout: map
     // lc.start();
 
     let markers = [
-        {% for e in site.data.examples %}   
-            {% capture id %}entry-{%increment markerCounter %}{% endcapture %}
-            {% include marker.js item=e popup_id=id %},
+        {% for o in site.data.orgs %}
+            {% assign org_id = o[0] %}
+            {% assign org = o[1] %}
+            {% for e in site.data[org_id] %}   
+                {% capture id %}{{org_id}}-{{e[0]}}{% endcapture %}
+                {% assign item=e[1] %}
+                {% include marker.js item=item org=org popup_id=id %},
+            {% endfor %}
         {% endfor %}
         false // pending entry so we can just make a comma in the loop
     ];
