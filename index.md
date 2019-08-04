@@ -158,7 +158,7 @@ layout: map
 
 	var mymap = L.map('mapid', {
         zoomControl: false
-    }).setView([51.930083, 4.507742], 13);
+    }).setView([51.31, 13.2320], 8);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
