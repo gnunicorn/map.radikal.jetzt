@@ -18,9 +18,8 @@ layout: map
     {% assign org_id = o[0] %}
     {% assign org = o[1] %}
 
-    {% for e in site.data[org_id] %}   
-        {% capture id %}{{org_id}}-{{e[0]}}{% endcapture %}
-        {% assign item=e[1] %}
+    {% for item in site.data[org_id] %}   
+        {% capture id %}{{org_id}}-{{item.title|handle}}{% endcapture %}
         {% include popup.html item=item org=org id=id %}
     {% endfor %}
 {% endfor %}
@@ -201,9 +200,8 @@ layout: map
         {% for o in site.data.orgs %}
             {% assign org_id = o[0] %}
             {% assign org = o[1] %}
-            {% for e in site.data[org_id] %}   
-                {% capture id %}{{org_id}}-{{e[0]}}{% endcapture %}
-                {% assign item=e[1] %}
+            {% for item in site.data[org_id] %}   
+                {% capture id %}{{org_id}}-{{item.title|handle}}{% endcapture %}
                 {% include marker.js item=item org=org popup_id=id %},
             {% endfor %}
         {% endfor %}
