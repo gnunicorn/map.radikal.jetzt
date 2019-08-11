@@ -177,12 +177,14 @@ layout: map
         position: 'topright',
         onLocationError: () => {},
         strings: {
-            title: "Show me where I am, yo!"
+            title: "Lokalisiere mich."
         }
     }).addTo( mymap );
 
     var sidebar = L.control.sidebar('sidebar').addTo( mymap );
-    sidebar.open("filter");
+    if (window.innerWidth >= 960) {
+        sidebar.open("filter");
+    }
 
     // lc.start();
 
