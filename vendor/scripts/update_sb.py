@@ -20,10 +20,7 @@ class SBSpider(scrapy.Spider):
         for entry in response.css("div.support a.support__item"):
             contact[entry.css(".visually-hidden::text").get()] = entry.attrib["href"]
 
-        for m in response.css("main h2::attr(href)"):
-            if m.startswith("mailto:"):
-                contact["email"] = m[7:]
-                break
+        contact["email"] = response.css('main a[href^="mailto:"]::attr(href)').get()
 
         yield {
             "title": title,
