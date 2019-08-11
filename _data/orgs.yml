@@ -1,11 +1,11 @@
-# seebruecke:
-#   title: Seebrücke
-#   website: "https://seebruecke.org/"
-#   header: "https://seebruecke.org/wp-content/uploads/2019/06/sichere-haefen-110-2400x1592.jpg"
-#   type: "ngo"
-#   topics:
-#     - diversity
-#     - refugeees
+sb:
+  title: Seebrücke
+  website: "https://seebruecke.org/"
+  header: "https://seebruecke.org/wp-content/uploads/2019/06/sichere-haefen-110-2400x1592.jpg"
+  type: "ngo"
+  topics:
+    - diversity
+    - refugeees
 xr:
   title: "Extinction Rebellion"
   website: "https://extinctionrebellion.de/"
