@@ -13,3 +13,10 @@ xr:
   type: "ngo"
   topics:
     - climate
+ff:
+  title: "FridaysForFuture"
+  website: "https://fridaysforfuture.de"
+  header: "/assets/images/ff-header.png"
+  type: "ngo"
+  topics:
+    - climate
