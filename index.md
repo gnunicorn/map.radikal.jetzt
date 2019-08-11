@@ -110,6 +110,15 @@ layout: map
         </div>
         <div class="sidebar-pane" id="contribute">
             <h1 class="sidebar-header">Contribute<span class="sidebar-close"><i class="fa fa-times-circle"></i></span></h1>
+            <h2>Eine weitere Gruppe in die Karte eintragen</h2>
+            <p>Hier erfährst du, wie du eine weitere Gruppe in die Karte eintragen kannst</p>
+            <h2>Eine Ortgruppe gründen</h2>
+            <p>Viele überregionale Organisationen helfen euch gerne, wenn ihr mit der Thematik Vorort aktiv  werden wollt. Diese und Kontakt-Informationen findet ihr auf den Seiten der Organisationen, hier direkt verlinkt</p>
+            <ul>
+                <li><a href="https://extinctionrebellion.de/ortsgruppe-gruenden/" target="_blank" rel="noopener">Extinction Rebellion</a></li>
+                <li><a href="https://fridaysforfuture.de/regionalgruppen/" target="_blank" rel="noopener">Fridays for Future</a></li>
+                <li><a href="https://seebruecke.org/mach-mit/" target="_blank" rel="noopener">Seebrücke</a></li>
+            </ul>
         </div>
     </div>
 </div>
