@@ -1,4 +1,18 @@
 <div id="{{include.id}}">
     <img src="{{include.item.header|default:include.org.header}}" />
     <h1>{{include.item.title}}</h1>
+    {% if include.iten.website %}
+        <li><a href="include.iten.website" title="website">
+            <i class="fa fa-globe"></i></li>
+    {% endif %}
+        
+    {% for e in include.item.contact %}
+        <li><a href="{{e[1]}}" title="{{e[0]}}">
+            {% if e[0] == "email" %}
+                <i class="fa fa-envelope"></i>
+            {% else if ['whatsapp', 'twitter', 'facebook', 'youtube', 'instagram'] containss e[0] %}
+                <i class="fab fa-{{e[0]}}"></i>
+            {% endif %}
+            </a></li>
+    {% endfor %}
 </div>
